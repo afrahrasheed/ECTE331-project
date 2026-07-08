@@ -1,0 +1,149 @@
+package synchronisation;
+
+
+public class SharedData {
+
+    private long A1;
+    private long A2;
+    private long A3;
+
+    private long B1;
+    private long B2;
+    private long B3;
+
+    private int a1Iteration = -1;
+    private int b2Iteration = -1;
+    private int a2Iteration = -1;
+    private int b3Iteration = -1;
+    private int a3Iteration = -1;
+
+    
+    public synchronized void setA1(int iteration, long value) {
+
+        A1 = value;
+        a1Iteration = iteration;
+
+        notifyAll();
+    }
+
+    
+    public synchronized long waitForA1(int iteration)
+            throws InterruptedException {
+
+        while (a1Iteration < iteration) {
+            wait();
+        }
+
+        return A1;
+    }
+
+  
+    public synchronized void setB1(long value) {
+
+        B1 = value;
+    }
+
+   
+    public synchronized void setB2(int iteration, long value) {
+
+        B2 = value;
+        b2Iteration = iteration;
+
+        notifyAll();
+    }
+
+   
+    public synchronized long waitForB2(int iteration)
+            throws InterruptedException {
+
+        while (b2Iteration < iteration) {
+            wait();
+        }
+
+        return B2;
+    }
+
+    
+    public synchronized void setA2(int iteration, long value) {
+
+        A2 = value;
+        a2Iteration = iteration;
+
+        notifyAll();
+    }
+
+   
+    public synchronized long waitForA2(int iteration)
+            throws InterruptedException {
+
+        while (a2Iteration < iteration) {
+            wait();
+        }
+
+        return A2;
+    }
+
+   
+    public synchronized void setB3(int iteration, long value) {
+
+        B3 = value;
+        b3Iteration = iteration;
+
+        notifyAll();
+    }
+
+   
+    public synchronized long waitForB3(int iteration)
+            throws InterruptedException {
+
+        while (b3Iteration < iteration) {
+            wait();
+        }
+
+        return B3;
+    }
+
+   
+    public synchronized void setA3(int iteration, long value) {
+
+        A3 = value;
+        a3Iteration = iteration;
+
+        notifyAll();
+    }
+
+   
+    public synchronized long waitForA3(int iteration)
+            throws InterruptedException {
+
+        while (a3Iteration < iteration) {
+            wait();
+        }
+
+        return A3;
+    }
+
+    public synchronized long getA1() {
+        return A1;
+    }
+
+    public synchronized long getA2() {
+        return A2;
+    }
+
+    public synchronized long getA3() {
+        return A3;
+    }
+
+    public synchronized long getB1() {
+        return B1;
+    }
+
+    public synchronized long getB2() {
+        return B2;
+    }
+
+    public synchronized long getB3() {
+        return B3;
+    }
+}
