@@ -1,0 +1,18 @@
+[2026-07-08 11:10:37] Drone navigation system started
+[2026-07-08 11:10:37] No majority found among valid sensors
+[2026-07-08 11:10:37] Fallback decision: previous altitude = 100m
+[2026-07-08 11:10:37] Reliability failure: No majority found. Consecutive failures =1
+[2026-07-08 11:10:37] No majority found among valid sensors
+[2026-07-08 11:10:37] Fallback decision: previous altitude = 100m
+[2026-07-08 11:10:37] Reliability failure: No majority found. Consecutive failures =2
+[2026-07-08 11:10:37] SAFE MODE activation: Two consecutive reliability failures detected
+
+[2026-07-08 11:11:43] Drone navigation system started
+[2026-07-08 11:11:43] Corrupted reading from Sensor C: -65
+[2026-07-08 11:11:43] No majority found among valid sensors
+[2026-07-08 11:11:43] Fallback decision: previous altitude = 100m
+[2026-07-08 11:11:43] Reliability failure: No majority found. Consecutive failures =1
+[2026-07-08 11:11:43] No majority found among valid sensors
+[2026-07-08 11:11:43] Fallback decision: previous altitude = 100m
+[2026-07-08 11:11:43] Reliability failure: No majority found. Consecutive failures =2
+[2026-07-08 11:11:43] SAFE MODE activation: Two consecutive reliability failures detected
