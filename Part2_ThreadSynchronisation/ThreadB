@@ -1,0 +1,63 @@
+package synchronisation;
+
+
+public class ThreadB extends Thread {
+
+    private final SharedData sharedData;
+    private final int iterations;
+
+    
+    public ThreadB(SharedData sharedData, int iterations) {
+
+        this.sharedData = sharedData;
+        this.iterations = iterations;
+    }
+
+    @Override
+    public void run() {
+
+        try {
+
+            for (int iteration = 0;
+                 iteration < iterations;
+                 iteration++) {
+
+                // FuncB1:
+                // B1 = sum from 0 to 250
+                long B1 = SumUtility.sumTo(250);
+
+                sharedData.setB1(B1);
+
+                // FuncB2 depends on A1
+                long A1 =
+                        sharedData.waitForA1(iteration);
+
+                // FuncB2:
+                // B2 = A1 + sum from 0 to 200
+                long B2 =
+                        A1 + SumUtility.sumTo(200);
+
+                sharedData.setB2(iteration, B2);
+
+                // FuncB3 depends on A2
+                long A2 =
+                        sharedData.waitForA2(iteration);
+
+                // FuncB3:
+                // B3 = A2 + sum from 0 to 400
+                long B3 =
+                        A2 + SumUtility.sumTo(400);
+
+                sharedData.setB3(iteration, B3);
+            }
+
+        } catch (InterruptedException e) {
+
+            System.out.println(
+                    "Thread B interrupted"
+            );
+
+            Thread.currentThread().interrupt();
+        }
+    }
+}
